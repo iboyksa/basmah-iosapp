@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-ipa:
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
       - name: Checkout Source
         uses: actions/checkout@v4
@@ -15,8 +15,10 @@ jobs:
       - name: Install XcodeGen
         run: brew install xcodegen
 
-      - name: Generate Xcode Project
-        run: xcodegen generate
+      - name: Generate Xcode Project (Compatible Format)
+        run: |
+          xcodegen generate
+          sed -i '' 's/objectVersion = 77;/objectVersion = 56;/g' BasmahAttendance.xcodeproj/project.pbxproj
 
       - name: Build Unsigned iOS App
         run: |
