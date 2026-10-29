@@ -1,6 +1,7 @@
 name: BasmahAttendance
 options:
   bundleIdPrefix: com.basmah.cloud
+  xcodeVersion: "15.0"
   deploymentTarget:
     iOS: "17.0"
 targets:
